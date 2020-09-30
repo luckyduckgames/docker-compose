@@ -3,7 +3,7 @@ services:
   weblate:
     image: weblate/weblate
     volumes:
-      - weblate-data:/app/data
+      - /mnt/Data/weblate/containers-data/weblate:/app/data
     env_file:
       - ./environment
     restart: always
@@ -15,15 +15,15 @@ services:
     env_file:
       - ./environment
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - /mnt/Data/weblate/containers-data/pg:/var/lib/postgresql/data
     restart: always
   cache:
     image: redis:5-alpine
     restart: always
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - redis-data:/data
-volumes:
-  weblate-data: {}
-  postgres-data: {}
-  redis-data: {}
+      - /mnt/Data/weblate/containers-data/redis:/data
+#volumes:
+#  weblate-data: {}
+#  postgres-data: {}
+#  redis-data: {}

@@ -3,7 +3,7 @@ services:
   weblate:
     image: weblate/weblate
     volumes:
-      - weblate-data:/app/data
+      - /mnt/Data/weblate/containers-data/weblate:/app/data
     env_file:
       - ./environment
     restart: always
@@ -18,14 +18,14 @@ services:
     env_file:
       - ./environment
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - /mnt/Data/weblate/containers-data/pg:/var/lib/postgresql/data
     restart: always
   cache:
-    image: redis:4-alpine
+    image: redis:5-alpine
     restart: always
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - redis-data:/data
+      - /mnt/Data/weblate/containers-data/redis:/data
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -37,9 +37,9 @@ services:
       PROXY_READ_TIMEOUT: 3600
       CLIENT_MAX_BODY_SIZE: 100M
     volumes:
-      - ssl-certs:/var/lib/https-portal
-volumes:
-  weblate-data: {}
-  postgres-data: {}
-  redis-data: {}
-  ssl-certs: {}
+      - /mnt/Data/weblate/containers-data/ssl-certs:/var/lib/https-portal
+#volumes:
+#  weblate-data: {}
+#  postgres-data: {}
+#  redis-data: {}
+#  ssl-certs: {}

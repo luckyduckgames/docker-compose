@@ -1,0 +1,26 @@
+version: '3'
+services:
+  weblate:
+    ports:
+      - 32001:8080
+    environment:
+      WEBLATE_EMAIL_HOST: smtp.gmail.com
+      WEBLATE_EMAIL_PORT: 465
+      WEBLATE_EMAIL_HOST_USER: info@luckyduckgames.com
+      WEBLATE_EMAIL_HOST_PASSWORD: LuckyInfoPWD1
+      WEBLATE_EMAIL_USE_TLS: 0
+      WEBLATE_EMAIL_USE_SSL: 1
+      WEBLATE_SERVER_EMAIL: info@luckyduckgames.com
+      WEBLATE_DEFAULT_FROM_EMAIL: info@luckyduckgames.com
+      WEBLATE_ALLOWED_HOSTS: loc.dev.luckyduckgames.com,localhost,192.168.7.3,31.172.179.198
+      WEBLATE_ADMIN_PASSWORD: bjtUTnKRHk7l9EegLNifOsqxmy4Iw32G
+      WEBLATE_ADMIN_EMAIL: marcin@luckyduckgames.com
+      WEBLATE_ADMIN_NAME: LDG Admin
+      WEBLATE_REGISTRATION_OPEN: 0
+      WEBLATE_TIME_ZONE: Europe/Warsaw
+      WEBLATE_REQUIRE_LOGIN: 1
+      WEBLATE_DEBUG: 0
+      WEBLATE_SITE_TITLE: "LDG LocTool"
+  https-portal:
+    environment:
+            DOMAINS: 'loc.dev.luckyduckgames.com -> http://weblate:8080, marcin.dev.vgwild.net -> http://10.10.10.30:55555'
