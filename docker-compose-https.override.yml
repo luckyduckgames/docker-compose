@@ -21,6 +21,9 @@ services:
       WEBLATE_REQUIRE_LOGIN: 1
       WEBLATE_DEBUG: 0
       WEBLATE_SITE_TITLE: "LDG LocTool"
+      WEBLATE_COMMIT_PENDING_HOURS: 1
+      WEBLATE_SIMPLIFY_LANGUAGES: 0
+      WEBLATE_SITE_DOMAIN: "loc.dev.luckyduckgames.com"
   https-portal:
     environment:
             DOMAINS: 'loc.dev.luckyduckgames.com -> http://weblate:8080, marcin.dev.vgwild.net -> http://10.10.10.30:55555'
